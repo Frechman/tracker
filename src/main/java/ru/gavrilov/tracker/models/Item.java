@@ -1,5 +1,6 @@
 package ru.gavrilov.tracker.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -30,6 +31,7 @@ public class Item implements Serializable {
 
     @Column(name = "DATE", nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateCreate;
 
     public Item(String name, String description, Date dateCreate) {
