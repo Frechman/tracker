@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -34,10 +36,10 @@ public class Item implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateCreate;
 
-    public Item(String name, String description, Date dateCreate) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
-        this.dateCreate = dateCreate;
+        this.dateCreate = Timestamp.valueOf(LocalDateTime.now());
     }
 
     @Override
