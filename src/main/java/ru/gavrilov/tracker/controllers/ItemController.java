@@ -3,10 +3,7 @@ package ru.gavrilov.tracker.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.gavrilov.tracker.models.Item;
 import ru.gavrilov.tracker.services.ItemRepositoryService;
 
@@ -22,15 +19,14 @@ public class ItemController {
     }
 
     @GetMapping("/add")
-    public String addItem() {
+    public String addItemPage() {
         return "addItem";
     }
 
     @PostMapping("/add")
     public String addItem(@ModelAttribute("item") Item item) {
         itemRepositoryService.create(item);
-        return "redirect:/items/listItems";
-
+        return "redirect:/items/all";
     }
 
     @GetMapping("/all")
@@ -39,13 +35,35 @@ public class ItemController {
         return "listItems";
     }
 
-//    Item create(Item item);
+    @GetMapping("/{id}")
+    public String showPageItem(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("item", itemRepositoryService.findById(id));
+        return "showItem";
+    }
+
+    @PutMapping("/update")
+    public String updateItem() {
+        return "";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteItem(@PathVariable Long id) {
+        itemRepositoryService.delete(id);
+        return "redirect:/items/all";
+    }
+
+    @PostMapping("/items/findByName")
+    public String findByName(@RequestParam("name") String name) {
+        return "";
+    }
+
+//    +Item create(Item item);
 //
 //    void update(String id, Item item);
 //
-//    void delete(String id);
+//    +void delete(String id);
 //
-//    List<Item> findAll();
+//    +List<Item> findAll();
 //
 //    Item findById(String id);
 //

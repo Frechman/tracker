@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <div th:replace="fragments::css"></div>
+    <title>List Items</title>
+</head>
+<body>
+<div>
+    <h1>All Items</h1>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date creation</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}">Id</td>
+        <td th:text="${item.name}">Name</td>
+        <td th:text="${item.description}">Description</td>
+        <td th:text="${item.dateCreate}">Date creation</td>
+        <td><a th:href="@{|/items/delete/${item.id}|}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:replace="fragments::footer"></footer>
+<footer th:replace="fragments::js"></footer>
+</body>
+</html>

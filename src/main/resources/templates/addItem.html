@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <div th:replace="fragments::css"></div>
+    <title>Add Item</title>
+</head>
+<body>
+<div>
+    <h1>Add Item</h1>
+</div>
+<div>
+    <form action="/items/add" method="post" id="itemform" name="itemform">
+        <fieldset>
+            <legend>Add new Item</legend>
+            <!--Text input Name-->
+            <div class="form-item">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" th:title="name"
+                       placeholder="Enter item's name"
+                       required="">
+            </div>
+            <!--Text input Description-->
+            <div class="form-item">
+                <label for="description">Description</label>
+                <input type="text" form="itemform" id="description" name="description" th:title="description"
+                       placeholder="Enter description of the problem"
+                       required="">
+            </div>
+            <!--Text input Button-->
+            <div class="form-item">
+                <label></label>
+                <input type="submit" id="submit-form" value="Create">
+                <label></label>
+                <input type="reset" id="reset-form" value="Reset">
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: js"></div>
+</body>
+</html>
