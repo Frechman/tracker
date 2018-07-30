@@ -29,7 +29,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService {
     }
 
     @Override
-    public void update(String itemId, Item itemDetails) {
+    public void update(Long itemId, Item itemDetails) {
         Item foundItem = this.findById(itemId)
                 .orElseThrow(() -> new ResourceNotFoundExceptions("Item", "id", itemId));
 
@@ -39,7 +39,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         itemRepository.deleteById(id);
     }
 
@@ -49,7 +49,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService {
     }
 
     @Override
-    public Optional<Item> findById(String id) {
+    public Optional<Item> findById(Long id) {
         return itemRepository.findById(id);
     }
 

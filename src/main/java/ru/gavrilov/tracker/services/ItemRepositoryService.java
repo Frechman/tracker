@@ -9,13 +9,13 @@ public interface ItemRepositoryService {
 
     void create(Item item);
 
-    void update(String id, Item item);
+    void update(Long id, Item item);
 
-    void delete(String id);
+    void delete(Long id);
 
     List<Item> findAll();
 
-    Optional<Item> findById(String id);
+    Optional<Item> findById(Long id);
 
     Optional<Item> findByName(String name);
 }

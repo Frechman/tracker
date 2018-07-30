@@ -18,12 +18,12 @@ import java.util.Date;
 @Setter
 
 @Entity
-@Table(name = "ITEM")
+@Table(name = "ITEMS")
 public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(name = "NAME", nullable = false)
     private String name;
