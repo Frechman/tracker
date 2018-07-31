@@ -8,6 +8,7 @@
     <title>List Items</title>
 </head>
 <body>
+<div th:replace="fragments :: navbar"></div>
 <div>
     <h1>All Items</h1>
 </div>
@@ -33,7 +34,7 @@
     </tbody>
 </table>
 
-<footer th:replace="fragments::footer"></footer>
-<footer th:replace="fragments::js"></footer>
+<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: js"></div>
 </body>
 </html>
