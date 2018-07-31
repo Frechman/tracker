@@ -17,5 +17,5 @@ public interface ItemRepositoryService {
 
     Optional<Item> findById(Long id);
 
-    Optional<Item> findByName(String name);
+    List<Item> findAllByName(String name);
 }
