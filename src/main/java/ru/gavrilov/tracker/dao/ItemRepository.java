@@ -10,4 +10,14 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAllByNameContaining(String name);
+
+    /**
+     * Тест.
+     * Возвращает все записи, которые содержат введеные значения в имени или номере.
+     *
+     * @param name         of an item.
+     * @param numberOfItem item.
+     * @return list of a founded items.
+     */
+    List<Item> findAllByNameContainingOrIdContaining(String name, Long numberOfItem);
 }
