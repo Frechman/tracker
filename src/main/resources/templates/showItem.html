@@ -12,7 +12,39 @@
 <div th:replace="fragments :: navbar"></div>
 
 <div class="container">
+    <div>
+        <form th:object="${item}">
+            <fieldset>
+                <legend>Show Item</legend>
+                <!--Text input Name-->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter item's name"
+                           th:value="*{name}" required="">
+                </div>
+                <!--Text input Description-->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"
+                              th:value="*{description}" placeholder="Enter description of the problem"
+                              required=""></textarea>
+                </div>
 
+                <!--Text input Button-->
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </fieldset>
+        </form>
+        <!--===-->
+        <form action="/items/{id}" method="post" id="itemform" name="itemform" th:object="${item}">
+            <div class="form-item">
+                <label></label>
+                <input type="submit" id="submit-form" value="Create">
+                <label></label>
+                <input type="reset" id="reset-form" value="Reset">
+            </div>
+        </form>
+    </div>
 </div>
 
 <footer th:replace="fragments :: footer"></footer>

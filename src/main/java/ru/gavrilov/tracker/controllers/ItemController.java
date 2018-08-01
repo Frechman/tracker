@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.gavrilov.exceptions.ResourceNotFoundExceptions;
 import ru.gavrilov.tracker.models.Item;
 import ru.gavrilov.tracker.services.ItemRepositoryService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/items")
@@ -39,7 +38,7 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public String showPageItem(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("item", service.findById(id));
+        model.addAttribute("item", service.findById(id).orElseThrow(() -> new ResourceNotFoundExceptions("Item", "id", id)));
         return "showItem";
     }
 
