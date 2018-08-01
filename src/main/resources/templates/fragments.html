@@ -3,8 +3,10 @@
       th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
     <meta charset="utf-8">
+    <!--Responsive meta tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div th:fragment="css" th:remove="tag">
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
               crossorigin="anonymous">
@@ -12,6 +14,7 @@
     </div>
 </head>
 <body>
+<!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
     <a class="navbar-brand" href="/">Tracker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/items/all}">All items</a>
@@ -43,12 +46,15 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <!--Search-->
+        <form class="form-inline my-2 my-lg-0" action="/items/search" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                   id="idOrName" name="idOrName" th:title="idOrName">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
+<!--footer-->
 <footer class="footer" th:fragment="footer">
     <div class="footer-copyright text-center">
         <a href="/">Tracker</a>
@@ -56,8 +62,11 @@
         © 2018 Copyright
     </div>
 </footer>
+<!--JS-->
 <div th:fragment="js" th:remove="tag">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
