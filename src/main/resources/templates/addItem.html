@@ -10,35 +10,31 @@
 <body>
 
 <div th:replace="fragments :: navbar"></div>
-<div class="container">
 
-    <div>
-        <h3>Add Item</h3>
-    </div>
+<div class="container fill">
+
     <div>
         <form action="/items/add" method="post" id="itemform" name="itemform">
             <fieldset>
                 <legend>Add new Item</legend>
                 <!--Text input Name-->
-                <div class="form-item">
+                <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" th:title="name"
-                           placeholder="Enter item's name"
-                           required="">
+                    <input type="text" class="form-control" id="name" name="name" th:title="name"
+                           placeholder="Enter item's name" required="">
                 </div>
                 <!--Text input Description-->
-                <div class="form-item">
+                <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" form="itemform" id="description" name="description" th:title="description"
-                           placeholder="Enter description of the problem"
-                           required="">
+                    <textarea class="form-control" id="description" name="description" rows="3"
+                              th:title="description" placeholder="Enter description of the problem"
+                              required=""></textarea>
                 </div>
+
                 <!--Text input Button-->
-                <div class="form-item">
-                    <label></label>
-                    <input type="submit" id="submit-form" value="Create">
-                    <label></label>
-                    <input type="reset" id="reset-form" value="Reset">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
                 </div>
             </fieldset>
         </form>
