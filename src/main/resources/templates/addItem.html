@@ -12,34 +12,36 @@
 <div th:replace="fragments :: navbar"></div>
 
 <div class="container fill">
+    <div class="starter-template">
 
-    <div>
-        <form action="/items/add" method="post" id="itemform" name="itemform">
-            <fieldset>
-                <legend>Add new Item</legend>
-                <!--Text input Name-->
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" th:title="name"
-                           placeholder="Enter item's name" required="">
-                </div>
-                <!--Text input Description-->
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"
-                              th:title="description" placeholder="Enter description of the problem"
-                              required=""></textarea>
-                </div>
+        <div>
+            <form action="/items/add" method="post" id="itemform" name="itemform">
+                <fieldset>
+                    <legend>Add new Item</legend>
+                    <!--Text input Name-->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" th:title="name"
+                               placeholder="Enter item's name" required="">
+                    </div>
+                    <!--Text input Description-->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                                  th:title="description" placeholder="Enter description of the problem"
+                                  required=""></textarea>
+                    </div>
 
-                <!--Text input Button-->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-primary">Reset</button>
-                </div>
-            </fieldset>
-        </form>
+                    <!--Text input Button-->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
     </div>
-
 </div>
 
 <footer th:replace="fragments :: footer"></footer>

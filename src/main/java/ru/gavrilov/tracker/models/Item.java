@@ -33,7 +33,7 @@ public class Item implements Serializable {
 
     @Column(name = "DATE", nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "spring.jackson.date-format")
     private Date dateCreate;
 
     public Item(String name, String description) {

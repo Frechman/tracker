@@ -5,46 +5,49 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div th:replace="fragments::css"></div>
-    <title>Add Item</title>
+    <title>Show Item</title>
 </head>
 <body>
 
 <div th:replace="fragments :: navbar"></div>
 
 <div class="container fill">
+    <div class="starter-template">
 
-    <div>
-        <form th:object="${item}">
-            <fieldset>
-                <legend>Show Item</legend>
-                <!--Text input Name-->
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter item's name"
-                           th:value="*{name}" required="">
+        <div>
+            <form th:action="|/items/${item.id}|" method="post" th:object="${item}">
+                <fieldset>
+                    <legend>Show Item</legend>
+                    <!--Text input Name-->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
+                               placeholder="Enter item's name" required="">
+                    </div>
+                    <!--Text input Description-->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                                  th:field="*{description}" placeholder="Enter description of the problem"
+                                  required=""></textarea>
+                    </div>
+
+                    <!--Text input Button-->
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="Reset" class="btn btn-primary">Reset</button>
+                </fieldset>
+            </form>
+            <!--&lt;!&ndash;===&ndash;&gt;
+            <form action="/items/{id}" method="post" id="itemform" name="itemform" th:object="${item}">
+                <div class="form-item">
+                    <label></label>
+                    <input type="submit" id="submit-form" value="Create">
+                    <label></label>
+                    <input type="reset" id="reset-form" value="Reset">
                 </div>
-                <!--Text input Description-->
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"
-                              th:value="*{description}" placeholder="Enter description of the problem"
-                              required=""></textarea>
-                </div>
+            </form>-->
+        </div>
 
-                <!--Text input Button-->
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </fieldset>
-        </form>
-        <!--===-->
-        <form action="/items/{id}" method="post" id="itemform" name="itemform" th:object="${item}">
-            <div class="form-item">
-                <label></label>
-                <input type="submit" id="submit-form" value="Create">
-                <label></label>
-                <input type="reset" id="reset-form" value="Reset">
-            </div>
-        </form>
     </div>
 </div>
 

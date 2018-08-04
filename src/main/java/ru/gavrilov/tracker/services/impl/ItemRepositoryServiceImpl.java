@@ -57,10 +57,4 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService {
     public List<Item> findAllByName(String name) {
         return itemRepository.findAllByNameContaining(name);
     }
-
-    @Override
-    public List<Item> search(String idOrName) {
-        itemRepository.findAllByNameContainingOrIdContaining(idOrName, Long.parseLong(idOrName));
-        return null;
-    }
 }

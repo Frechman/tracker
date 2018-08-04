@@ -1,3 +1,11 @@
-.fill {
-    height: 100vh;
+html, body {
+    min-height: 100%;
+}
+
+.footer {
+    background-color: #f8f9fa !important;
+}
+
+.container {
+    height: calc(100vh - 56px - 48px);
 }

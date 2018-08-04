@@ -27,60 +27,37 @@ public class ItemController {
     @PostMapping("/add")
     public String addItem(@ModelAttribute("item") Item item) {
         service.create(item);
-        return "redirect:/items/all";
+        return "redirect:/items/";
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public String findAll(Model model) {
         model.addAttribute("items", service.findAll());
         return "listItems";
     }
 
     @GetMapping("/{id}")
-    public String showPageItem(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("item", service.findById(id).orElseThrow(() -> new ResourceNotFoundExceptions("Item", "id", id)));
+    public String showItem(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("item", service.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundExceptions("Item", "id", id)));
         return "showItem";
-    }
-
-    @PutMapping("/update")
-    public String updateItem() {
-        return "";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteItem(@PathVariable Long id) {
         service.delete(id);
-        return "redirect:/items/all";
-    }
-
-    @PostMapping("/items/findByName")
-    public String findByName(@RequestParam("name") String name) {
-
-        return "";
+        return "redirect:/items/";
     }
 
     @PostMapping("/search")
-    public String findById(@ModelAttribute("idOrName") String idOrName) {
-
-        return "redirect:/items/search";
+    public String searchItem(@RequestParam("idOrName") String idOrName, Model model) {
+        model.addAttribute("items", service.findAllByName(idOrName));
+        return "listItems";
     }
 
-    @GetMapping("/search")
-    public String findByIdPage(String idOrName, Model model) {
-        model.addAttribute("found", service.findAllByName(idOrName));
-        return "search";
+    @PostMapping("/{id}")
+    public String updateItem(@PathVariable("id") Long id, @ModelAttribute("item") Item item) {
+        service.update(id, item);
+        return "redirect:/items/";
     }
-
-//    +Item create(Item item);
-//
-//    void update(String id, Item item);
-//
-//    +void delete(String id);
-//
-//    +List<Item> findAll();
-//
-//    Item findById(String id);
-//
-//    Item findByName(String name)
-
 }
