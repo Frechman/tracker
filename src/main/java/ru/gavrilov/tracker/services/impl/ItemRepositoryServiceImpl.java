@@ -2,7 +2,7 @@ package ru.gavrilov.tracker.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.gavrilov.exceptions.ResourceNotFoundExceptions;
+import ru.gavrilov.tracker.exceptions.ResourceNotFoundExceptions;
 import ru.gavrilov.tracker.dao.ItemRepository;
 import ru.gavrilov.tracker.models.Item;
 import ru.gavrilov.tracker.services.ItemRepositoryService;
