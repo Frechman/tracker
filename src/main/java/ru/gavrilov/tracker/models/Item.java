@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -26,9 +28,11 @@ public class Item implements Serializable {
     private Long id;
 
     @Column(name = "NAME", nullable = false)
+    @Size(min = 3, max = 100)
+    @NotNull
     private String name;
 
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @Column(name = "DATE", nullable = false)

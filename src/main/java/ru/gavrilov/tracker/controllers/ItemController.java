@@ -20,7 +20,8 @@ public class ItemController {
     }
 
     @GetMapping("/add")
-    public String addItemPage() {
+    public String addItemPage(Model model) {
+        model.addAttribute("item", new Item());
         return "addItem";
     }
 

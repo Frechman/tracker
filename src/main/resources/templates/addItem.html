@@ -15,20 +15,20 @@
     <div class="starter-template">
 
         <div>
-            <form action="/items/add" method="post" id="itemform" name="itemform">
+            <form th:action="@{/items/add}" method="post" id="itemform" name="itemform" th:object="${item}">
                 <fieldset>
                     <legend>Add new Item</legend>
                     <!--Text input Name-->
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" th:title="name"
+                        <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
                                placeholder="Enter item's name" required="">
                     </div>
                     <!--Text input Description-->
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="3"
-                                  th:title="description" placeholder="Enter description of the problem"
+                                  th:field="*{description}" placeholder="Enter description of the problem"
                                   required=""></textarea>
                     </div>
 
