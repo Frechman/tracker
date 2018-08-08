@@ -21,8 +21,8 @@
                     <!--Text input Name-->
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
-                               placeholder="Enter item's name" required="">
+                        <input type="text" class="form-control validation" id="name" name="name" th:field="*{name}"
+                               placeholder="Enter item's name" required title="3 to 100 characters" pattern=".{3,100}">
                     </div>
                     <!--Text input Description-->
                     <div class="form-group">

@@ -21,7 +21,7 @@
             <table class="table table-bordered table-hover table-sm">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>№</th>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
@@ -37,8 +37,8 @@
                     <td th:text="${item.description}">Description</td>
                     <td th:text="${#dates.format(item.dateCreate, 'EEE, dd MMM yyyy, HH:mm')}">Date creation</td>
                     <td>
-                        <a th:href="@{|/items/${item.id}|}">show</a>
-                        <a th:href="@{|/items/delete/${item.id}|}">delete</a>
+                        <a class="badge badge-info" th:href="@{|/items/${item.id}|}">show</a>
+                        <a class="badge badge-info" th:href="@{|/items/delete/${item.id}|}">delete</a>
                     </td>
                 </tr>
                 </tbody>
