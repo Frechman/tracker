@@ -28,7 +28,7 @@ public class WebServiceLogging {
     public void logAfter(JoinPoint jp, Object result) {
         String methodName = jp.getSignature().getName();
         String resValue = result == null ? "null" : result.toString();
-        log.debug("Method: " + methodName + " returned value : " + resValue);
+        log.debug("Method \"" + methodName + "\" returned value : " + resValue);
     }
 
 }

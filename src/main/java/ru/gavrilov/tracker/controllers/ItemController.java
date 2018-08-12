@@ -44,21 +44,21 @@ public class ItemController {
         return "showItem";
     }
 
+    @PutMapping("/{id}")
+    public String updateItem(@PathVariable("id") Long id, @ModelAttribute("item") Item item) {
+        service.update(id, item);
+        return "redirect:/items/";
+    }
+
     @GetMapping("/delete/{id}")
     public String deleteItem(@PathVariable Long id) {
         service.delete(id);
         return "redirect:/items/";
     }
 
-    @PostMapping("/search")
-    public String searchItem(@RequestParam("idOrName") String idOrName, Model model) {
-        model.addAttribute("items", service.findAllByName(idOrName));
+    @GetMapping("/search")
+    public String searchItem(@RequestParam("name") String name, Model model) {
+        model.addAttribute("items", service.findAllByName(name));
         return "listItems";
-    }
-
-    @PostMapping("/{id}")
-    public String updateItem(@PathVariable("id") Long id, @ModelAttribute("item") Item item) {
-        service.update(id, item);
-        return "redirect:/items/";
     }
 }

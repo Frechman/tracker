@@ -2,8 +2,8 @@ package ru.gavrilov.tracker.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.gavrilov.tracker.exceptions.ResourceNotFoundExceptions;
 import ru.gavrilov.tracker.dao.ItemRepository;
+import ru.gavrilov.tracker.exceptions.ResourceNotFoundExceptions;
 import ru.gavrilov.tracker.models.Item;
 import ru.gavrilov.tracker.services.ItemRepositoryService;
 
@@ -24,8 +24,10 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService {
 
     @Override
     public void create(Item item) {
-        item.setDateCreate(Timestamp.valueOf(LocalDateTime.now()));
-        itemRepository.save(item);
+        if (item != null) {
+            item.setDateCreate(Timestamp.valueOf(LocalDateTime.now()));
+            itemRepository.save(item);
+        }
     }
 
     @Override

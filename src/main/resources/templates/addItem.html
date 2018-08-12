@@ -2,46 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <div th:replace="fragments::css"></div>
-    <title>Add Item</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <div th:replace="fragments::css"></div>
+  <title>Add Item</title>
 </head>
 <body>
 
-<div th:replace="fragments :: navbar"></div>
+<div th:replace="fragments :: header"></div>
 
-<div class="container fill">
-    <div class="starter-template">
+<div class="container">
+  <div class="starter-template">
 
-        <div>
-            <form th:action="@{/items/add}" method="post" id="itemform" name="itemform" th:object="${item}">
-                <fieldset>
-                    <legend>Add new Item</legend>
-                    <!--Text input Name-->
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
-                               placeholder="Enter item's name" required title="3 to 100 characters" pattern=".{3,100}">
-                    </div>
-                    <!--Text input Description-->
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"
-                                  th:field="*{description}" placeholder="Enter description of the problem"
-                                  required=""></textarea>
-                    </div>
+    <div>
+      <form th:action="@{/items/add}" method="post" id="itemform" name="itemform" th:object="${item}">
+        <fieldset>
+          <legend>Add new Item</legend>
+          <!--Text input Name-->
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
+                   placeholder="Enter item's name" required title="3 to 100 characters"
+                   pattern=".{3,100}">
+          </div>
+          <!--Text input Description-->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                      th:field="*{description}" placeholder="Enter description of the problem"
+                      required=""></textarea>
+          </div>
 
-                    <!--Text input Button-->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-primary">Reset</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-
+          <!--Text input Button-->
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+          </div>
+        </fieldset>
+      </form>
     </div>
+
+  </div>
 </div>
 
 <footer th:replace="fragments :: footer"></footer>

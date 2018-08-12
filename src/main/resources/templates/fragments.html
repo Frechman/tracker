@@ -2,78 +2,83 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
-    <meta charset="utf-8">
-    <!--Responsive meta tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <div th:fragment="css" th:remove="tag">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-              crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
-        <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
-    </div>
+  <meta charset="utf-8">
+  <!--Responsive meta tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <div th:fragment="css" th:remove="tag">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"/>
+  </div>
 </head>
 <body>
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
-    <a class="navbar-brand" href="/" style="padding: 0;">
+<!--Header-->
+<header th:fragment="header">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/" style="padding: 0;">
         <img src="#" th:src="@{/images/logo/logo.png}" th:height="40px" class="d-inline-block align-center" alt="">
         Tracker
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/items/}">All items</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Action
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/items/add}">New Item</a>
-                    <!--<a class="dropdown-item" href="#">Another action</a>-->
-                    <!--<div class="dropdown-divider"></div>-->
-                    <!--<a class="dropdown-item" href="#">Something else here</a>-->
-                </div>
-            </li>
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-            <!--</li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/items/}">All items</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" th:href="@{/items/add}">New Item</a>
+              <!--<a class="dropdown-item" href="#">Another action</a>-->
+              <!--<div class="dropdown-divider"></div>-->
+              <!--<a class="dropdown-item" href="#">Something else here</a>-->
+            </div>
+          </li>
+          <!--<li class="nav-item">-->
+          <!--<a class="nav-link disabled" href="#">Disabled</a>-->
+          <!--</li>-->
         </ul>
         <!--Search-->
-        <form class="form-inline my-2 my-lg-0" action="/items/search" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                   id="idOrName" name="idOrName" th:title="idOrName">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" action="/items/search" th:method="get">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search"
+                 id="formSearch" name="name">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </form>
+      </div>
     </div>
-</nav>
+  </nav>
+</header>
 <!--footer-->
-<footer class="footer" th:fragment="footer">
-    <div class="footer-copyright text-center">
-        <a href="/">Tracker</a>
-        <br/>
-        © 2018 Copyright
-    </div>
+<footer class="footer fixed-bottom" th:fragment="footer">
+  <div class="footer-copyright text-center">
+    <a href="/">Tracker</a>
+    <br/>
+    © 2018 Copyright
+  </div>
 </footer>
 <!--JS-->
 <div th:fragment="js" th:remove="tag">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+          integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
 </div>
 </body>
 </html>
