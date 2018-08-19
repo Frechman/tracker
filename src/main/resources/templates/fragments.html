@@ -59,6 +59,13 @@
                  id="formSearch" name="name">
           <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <!--Logout-->
+        <div class="">
+          <h6 th:inline="text">User name: [[${#httpServletRequest.remoteUser}]].</h6>
+          <form th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Log Out</button>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
